@@ -15,13 +15,23 @@ import * as React from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import FileOpenIcon from "@mui/icons-material/FileOpen";
 
-function generate(element: any) {
-    return [0, 1, 2].map((value: any) =>
-        React.cloneElement(element, {
-            key: value,
-        })
-    );
-}
+const data = [
+    {
+        id: 1,
+        fileName: "textFile_v1_.txt",
+        modifiedDate: "Jan 2022 12 : 11:22",
+    },
+    {
+        id: 2,
+        fileName: "textFile_v1_.txt",
+        modifiedDate: "Jan 2022 12 : 11:22",
+    },
+    {
+        id: 3,
+        fileName: "textFile_v1_.txt",
+        modifiedDate: "Jan 2022 12 : 11:22",
+    },
+];
 
 const Demo = styled("div")(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
@@ -48,7 +58,7 @@ export default function FlatFileList() {
                     </Typography> */}
                     <Demo>
                         <List>
-                            {generate(
+                            {data.map((m) => (
                                 <>
                                     <ListItem>
                                         <ListItemAvatar>
@@ -58,25 +68,38 @@ export default function FlatFileList() {
                                                 />
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <Typography>Testing 1123</Typography>
-                                        <ListItemButton>
-                                            <Box sx={{ display: "flex" }}>
-                                                <FileOpenIcon
-                                                    onClick={handleFileOpen}
-                                                    sx={{ color: "primary" }}
-                                                />
-                                                <CheckCircleOutlineIcon
-                                                    sx={{ color: "primary" }}
-                                                />
-                                                <DeleteIcon
-                                                    sx={{ color: "primary" }}
-                                                />
-                                            </Box>
-                                        </ListItemButton>
+                                        <Typography>{m.fileName}</Typography>
+                                        <Box
+                                            sx={{
+                                                marginLeft: "auto",
+                                                display: "flex",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <FileOpenIcon
+                                                onClick={handleFileOpen}
+                                                sx={{
+                                                    color: "primary.main",
+                                                    mx: 1,
+                                                }}
+                                            />
+                                            <CheckCircleOutlineIcon
+                                                sx={{
+                                                    color: "primary.main",
+                                                    mx: 1,
+                                                }}
+                                            />
+                                            <DeleteIcon
+                                                sx={{
+                                                    color: "primary.main",
+                                                    mx: 1,
+                                                }}
+                                            />
+                                        </Box>
                                     </ListItem>
                                     <Divider />
                                 </>
-                            )}
+                            ))}
                         </List>
                     </Demo>
                 </Grid>
